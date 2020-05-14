@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<mapper namespace="com.zengpc.dao.UserDao">
+    <select id="getUsers" resultType="com.zengpc.pojo.User">
+    select a.row_id as "rowId",
+        a.user_code as "userCode",
+        a.user_name as "userName" from users a
+  </select>
+</mapper>

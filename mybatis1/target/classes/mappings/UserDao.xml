@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zengpc.dao.UserDao">
+
+    <sql id="userEntity">
+        a.row_id as "rowId",
+        a.user_code as "userCode",
+        a.user_name as "userName"
+    </sql>
+
+    <select id="getUsers" resultType="user">
+    select <include refid="userEntity"/> from users a
+  </select>
+</mapper>
