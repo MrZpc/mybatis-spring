@@ -18,6 +18,8 @@
 
     <context:property-placeholder location="classpath:sys.properties"/>
     <bean:annotation-config/>
+    <aop:aspectj-autoproxy />
+
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${driver}"/>
@@ -48,6 +50,19 @@
     </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+
+  <!--  &lt;!&ndash;结合AOP实现事务的织入&ndash;&gt;
+    <tx:advice id="transactionInterceptor" transaction-manager="transactionManager">
+        <tx:attributes>
+            &lt;!&ndash;propagation spring的传播特性&ndash;&gt;
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="point" expression="execution(* com.zengpcSpring.dao.*.*(..))"/>
+        <aop:advisor advice-ref="transactionInterceptor" pointcut-ref="point" />
+    </aop:config>-->
 
     <bean id="userDao" class="com.zengpcSpring.dao.UserDaoImpl">
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>

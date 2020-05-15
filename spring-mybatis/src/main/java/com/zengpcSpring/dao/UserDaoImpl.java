@@ -12,9 +12,6 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao{
     @Override
     @Transactional
     public List<User> getUsers() {
-        User user = new User("7","006","hhh");
-        insertInfo(user);
-        delete("1");
         return getSqlSession().getMapper(UserDao.class).getUsers();
     }
 
