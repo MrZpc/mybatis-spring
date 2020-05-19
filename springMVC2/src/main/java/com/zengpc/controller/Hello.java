@@ -12,6 +12,7 @@ public class Hello  implements Controller {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("msg","aaaa");
         modelAndView.setViewName("test");
+
         return modelAndView;
     }
 }
